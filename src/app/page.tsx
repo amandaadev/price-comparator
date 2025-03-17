@@ -1,8 +1,28 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+
+interface Produto {
+  _id: string; // Corrigido para refletir o campo _id gerado pelo MongoDB
+  nome: string;
+  preco: number;
+  mercado: string;
+}
 
 export default function Home() {
   const [produto, setProduto] = useState("");
+  const [resultados, setResultados] = useState<Produto[]>([]);
+
+  const buscarPrecos = async () => {
+    const res = await fetch(`http://localhost:5000/produtos?nome=${produto}`);
+    const data = await res.json();
+    setResultados(data);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      buscarPrecos(); // Executa a busca quando o Enter é pressionado
+    }
+  };
 
   return (
     <main
@@ -13,7 +33,7 @@ export default function Home() {
       <h1 className="text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400 animate-bounce duration-1000 shadow-lg md:text-6xl">
         Busca Preços
       </h1>
-      <p className="md:text-[25px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400 animate-bounce duration-1000 shadow-lg text-[18px] text-center">
+      <p className="md:text-[25px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400  animate-bounce duration-1000 shadow-lg text-[18px] text-center">
         Comparou, economizou!
       </p>
       <div className="mt-4 flex relative z-10 gap-2">
@@ -22,14 +42,23 @@ export default function Home() {
           value={produto}
           onChange={(e) => setProduto(e.target.value)}
           placeholder="Digite o nome do produto"
+          onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-gray-400 text-white font-semibold px-4 py-2 rounded text-[20px] shadow-lg cursor-not-allowed"
-          disabled
+          onClick={buscarPrecos}
+          className="bg-green-600 text-white font-semibold px-4 py-2 rounded text-[20px] shadow-lg transform transition-all duration-300 hover:bg-green-700 hover:scale-105 hover:shadow-xl"
         >
           Buscar
         </button>
       </div>
+      <ul className="mt-4 relative z-10 w-80">
+        {resultados.map((item) => (
+          <li key={item._id} className="border-2 border-white p-2 mt-2">
+            <strong>{item.nome}</strong> - R${item.preco.toFixed(2)} (
+            {item.mercado})
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
