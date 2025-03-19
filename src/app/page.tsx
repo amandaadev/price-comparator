@@ -24,6 +24,9 @@ export default function Home() {
     }
   };
 
+  const menorPreco =
+    resultados.length > 0 ? Math.min(...resultados.map((p) => p.preco)) : null;
+
   return (
     <main
       className="flex flex-col justify-center items-center min-h-screen p-4 bg-cover bg-center"
@@ -38,7 +41,7 @@ export default function Home() {
       </p>
       <div className="mt-4 flex relative z-10 gap-2">
         <input
-          className="border-2 border-b-fuchsia-300 p-2 w-auto md:w-80"
+          className="border-2 border-b-fuchsia-300 p-2 w-auto md:w-72"
           value={produto}
           onChange={(e) => setProduto(e.target.value)}
           placeholder="Digite o nome do produto"
@@ -51,13 +54,24 @@ export default function Home() {
           Buscar
         </button>
       </div>
-      <ul className="mt-4 relative z-10 w-80">
-        {resultados.map((item) => (
-          <li key={item._id} className="border-2 border-white p-2 mt-2">
-            <strong>{item.nome}</strong> - R${item.preco.toFixed(2)} (
-            {item.mercado})
-          </li>
-        ))}
+      <ul className="mt-4 relative z-10">
+        {resultados.map((item) => {
+          const isMenorPreco = item.preco === menorPreco;
+
+          return (
+            <li
+              key={item._id}
+              className={`border-2 p-2 mt-2 w-full text-center ${
+                isMenorPreco
+                  ? "border-yellow-400 bg-yellow-600 animate-pulse font-bold scale-105"
+                  : "border-white"
+              }`}
+            >
+              <strong>{item.nome}</strong> - R${item.preco.toFixed(2)} (
+              {item.mercado})
+            </li>
+          );
+        })}
       </ul>
     </main>
   );
