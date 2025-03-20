@@ -13,10 +13,15 @@ export default function Home() {
   const [resultados, setResultados] = useState<Produto[]>([]);
 
   const buscarPrecos = async () => {
-    const res = await fetch(`http://localhost:5000/produtos?nome=${produto}`);
+    const API_URL =
+      process.env.NEXT_PUBLIC_API_URL ||
+      "https://price-comparator-flu7ram0m-amandaadevs-projects.vercel.app/api/products";
+
+    const res = await fetch(`${API_URL}?nome=${produto}`);
     const data = await res.json();
     setResultados(data);
   };
+
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
