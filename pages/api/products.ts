@@ -1,19 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
-import Product from "../../backend/models/product";
+const Product = require("../models/product");
 
 const MONGO_URI = process.env.MONGO_URI!; // Pegue a URL do MongoDB do .env
 
 // Conectar ao MongoDB (evita reconectar em cada requisição)
 const conectarDB = async () => {
-  try {
-    if (mongoose.connection.readyState === 0) {
-      await mongoose.connect(MONGO_URI);
-      console.log("MongoDB conectado com sucesso!");
-    }
-  } catch (error) {
-    console.error("Erro ao conectar ao MongoDB:", error);
-    throw new Error("Erro ao conectar ao banco de dados");
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(MONGO_URI);
   }
 };
 
@@ -31,7 +25,6 @@ export default async function handler(
       });
       return res.status(200).json(produtos);
     } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
       return res.status(500).json({ error: "Erro ao buscar produtos" });
     }
   }
@@ -43,7 +36,6 @@ export default async function handler(
       await novoProduto.save();
       return res.status(201).json(novoProduto);
     } catch (error) {
-      console.error("Erro ao adicionar produto:", error);
       return res.status(500).json({ error: "Erro ao adicionar produto" });
     }
   }
