@@ -13,7 +13,9 @@ export default function Home() {
   const [resultados, setResultados] = useState<Produto[]>([]);
 
   const buscarPrecos = async () => {
-    const res = await fetch(`http://localhost:5000/produtos?nome=${produto}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
+    );
     const data = await res.json();
     setResultados(data);
   };
