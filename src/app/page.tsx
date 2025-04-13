@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 interface Produto {
-  _id: string; // Corrigido para refletir o campo _id gerado pelo MongoDB
+  _id: string; // Reflete o campo id gerado pelo MongoDB
   nome: string;
   preco: number;
   mercado: string;
@@ -11,23 +11,41 @@ interface Produto {
 export default function Home() {
   const [produto, setProduto] = useState("");
   const [resultados, setResultados] = useState<Produto[]>([]);
+  const [buscaFeita, setBuscaFeita] = useState(false);
 
   const buscarPrecos = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
-    );
-    const data = await res.json();
-    setResultados(data);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
+      );
+
+      setBuscaFeita(true);
+
+      if (!res.ok) {
+        setResultados([]);
+        return;
+      }
+
+      const data = await res.json();
+      setResultados(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Erro ao buscar:", error);
+      setResultados([]);
+      setBuscaFeita(true);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      buscarPrecos(); // Executa a busca quando o Enter é pressionado
+      buscarPrecos();
     }
   };
 
   const menorPreco =
     resultados.length > 0 ? Math.min(...resultados.map((p) => p.preco)) : null;
+
+  {
+  }
 
   return (
     <main
@@ -75,6 +93,11 @@ export default function Home() {
           );
         })}
       </ul>
+      {buscaFeita && resultados.length === 0 && (
+        <p className="text-white text-2xl mt-4 relative z-10">
+          Nenhum resultado encontrado.
+        </p>
+      )}
     </main>
   );
 }

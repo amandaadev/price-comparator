@@ -8,11 +8,20 @@ const productRoutes = require("./routes/products");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = [
+  "https://price-comparator-nine.vercel.app", // frontend principal
+  "https://price-comparator-git-main-amandaadevs-projects.vercel.app", // fallback de preview
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 app.use(express.json()); // Necessário para fazer parsing do corpo das requisições POST
 
 // Rota para produtos
-app.use("/produtos", productRoutes); // A rota /produtos agora deve funcionar
+app.use("/produtos", productRoutes);
 
 // Conexão com o banco de dados MongoDB
 mongoose
