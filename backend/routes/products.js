@@ -10,9 +10,11 @@ router.get("/", async (req, res) => {
     const produtos = await Product.find({ nome: new RegExp(nome, "i") });
     res.json(produtos);
   } catch (error) {
+    console.error("Erro real ao buscar produtos:", error); // 👈 adicione esta linha
     res.status(500).json({ error: "Erro ao buscar produtos" });
   }
 });
+
 
 // Adicionar um novo produto
 router.post("/", async (req, res) => {
