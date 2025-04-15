@@ -18,12 +18,9 @@ app.use(
     origin: allowedOrigins,
   })
 );
-app.use(express.json()); // Necessário para fazer parsing do corpo das requisições POST
+app.use(express.json()); // Necessário para parsing
 
-// Rota para produtos
-app.use("/produtos", productRoutes);
-
-// Conexão com o banco de dados MongoDB
+// Só conecta e sobe o servidor depois de conectar no MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -31,11 +28,19 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB conectado");
+
+    // define rotas
+    app.use("/produtos", productRoutes);
+
+    // sobe o servidor
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
   })
   .catch((err) => {
-    console.log("Erro ao conectar ao MongoDB:", err);
+    console.error("Erro ao conectar ao MongoDB:", err);
   });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+
+
+
