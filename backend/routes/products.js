@@ -5,15 +5,29 @@ const router = express.Router();
 
 // Buscar produtos por nome
 router.get("/", async (req, res) => {
+  console.log("Requisição recebida no backend");
+
   const { nome } = req.query;
+
   try {
-    const produtos = await Product.find({ nome: new RegExp(nome, "i") });
+    let produtos;
+    if (nome) {
+      console.log(`Buscando produtos com nome: ${nome}`);
+      produtos = await Product.find({ nome: new RegExp(nome, "i") }); // "i" para case-insensitive
+    } else {
+      console.log("Buscando todos os produtos");
+      produtos = await Product.find({});
+    }
+
+    console.log(`Produtos encontrados: ${produtos.length}`);
     res.json(produtos);
   } catch (error) {
-    console.error("Erro real ao buscar produtos:", error);
+    console.error("Erro ao buscar produtos:", error);
     res.status(500).json({ error: "Erro ao buscar produtos" });
   }
 });
+
+
 
 // Adicionar um novo produto
 router.post("/", async (req, res) => {

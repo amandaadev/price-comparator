@@ -2,15 +2,17 @@ require("dotenv").config(); // Carrega o arquivo .env
 
 const express = require("express");
 const cors = require("cors");
+
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
+
+console.log("Variável MONGO_URI:", process.env.MONGO_URI);
 
 const allowedOrigins = [
   "https://price-comparator-nine.vercel.app", // frontend principal
-  "https://price-comparator-git-main-amandaadevs-projects.vercel.app", // fallback de preview
 ];
 
 app.use(

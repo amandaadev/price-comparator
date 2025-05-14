@@ -44,8 +44,6 @@ export default function Home() {
   const menorPreco =
     resultados.length > 0 ? Math.min(...resultados.map((p) => p.preco)) : null;
 
-  {
-  }
 
   return (
     <main
