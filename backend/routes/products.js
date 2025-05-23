@@ -3,7 +3,12 @@ const Product = require("../models/product");
 
 const router = express.Router();
 
-// Buscar produtos por nome
+// Função para remover acentos de uma string
+function removerAcentos(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+// Buscar produtos por nome (com suporte a pesquisa sem acento)
 router.get("/", async (req, res) => {
   console.log("Requisição recebida no backend");
 
@@ -11,9 +16,18 @@ router.get("/", async (req, res) => {
 
   try {
     let produtos;
+
     if (nome) {
-      console.log(`Buscando produtos com nome: ${nome}`);
-      produtos = await Product.find({ nome: new RegExp(nome, "i") }); // "i" para case-insensitive
+      const termo = removerAcentos(nome.trim());
+
+      // Busca todos os produtos e filtra manualmente
+      const todosProdutos = await Product.find({});
+      produtos = todosProdutos.filter((p) => {
+        const nomeProdutoNormalizado = removerAcentos(p.nome);
+        return nomeProdutoNormalizado
+          .toLowerCase()
+          .startsWith(termo.toLowerCase());
+      });
     } else {
       console.log("Buscando todos os produtos");
       produtos = await Product.find({});
@@ -26,8 +40,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar produtos" });
   }
 });
-
-
 
 // Adicionar um novo produto
 router.post("/", async (req, res) => {
@@ -43,10 +55,12 @@ router.post("/", async (req, res) => {
     await novoProduto.save();
     res.status(201).json(novoProduto); // Retorna o produto criado
   } catch (error) {
+    console.error("Erro ao adicionar produto:", error);
     res.status(500).json({ error: "Erro ao adicionar produto" });
   }
 });
 
+// Deletar produto
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

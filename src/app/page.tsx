@@ -15,10 +15,11 @@ export default function Home() {
 
   const buscarPrecos = async () => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
-      );
+      const url = produto
+        ? `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/produtos`;
 
+      const res = await fetch(url);
       setBuscaFeita(true);
 
       if (!res.ok) {
@@ -43,7 +44,6 @@ export default function Home() {
 
   const menorPreco =
     resultados.length > 0 ? Math.min(...resultados.map((p) => p.preco)) : null;
-
 
   return (
     <main

@@ -9,10 +9,9 @@ const productRoutes = require("./routes/products");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-console.log("Variável MONGO_URI:", process.env.MONGO_URI);
-
 const allowedOrigins = [
-  "https://price-comparator-nine.vercel.app", // frontend principal
+  "http://localhost:3000", // para uso local
+  "https://price-comparator-nine.vercel.app", // produção
 ];
 
 app.use(
@@ -42,7 +41,3 @@ mongoose
   .catch((err) => {
     console.error("Erro ao conectar ao MongoDB:", err);
   });
-
-
-
-
