@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Price Comparator
 
-## Getting Started
+Aplicação web para facilitar a comparação de preços de produtos em mercados fictícios, com foco em ajudar pessoas de baixa renda a economizar.
+A plataforma simula uma rede de mercados fictícios, permitindo que o usuário compare preços de forma prática, como se estivesse pesquisando em mercados reais próximos.
 
-First, run the development server:
+## Índice
 
+- <a href="#objetivo">Objetivo</a>
+- <a href="#funcionalidades">Funcionalidades</a>
+- <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
+- <a href="#como-rodar-o-projeto-localmente"> Como rodar o projeto localmente</a>
+- <a href="#desenvolvido-por"> Desenvolvido por</a>
+
+
+## 🎯 Objetivo
+O Price Comparator tem como principal missão promover o consumo consciente e facilitar o acesso a informações de preços, ajudando pessoas de baixa renda a economizar no dia a dia.
+A plataforma simula uma rede de mercados fictícios, possibilitando a comparação rápida e eficiente de preços.
+
+## 🚀 Funcionalidades
+- 🔎 Buscar produtos pelo nome.
+- 📊 Comparar preços entre mercados fictícios.
+- 🏆 Destaque automático para o menor preço.
+- 🔄 Feedback visual de carregamento.
+- ⚠️ Exibição de mensagens de erro caso a API esteja indisponível.
+
+## 🖥️ Tecnologias Utilizadas
+- Frontend: Next.js, React, Tailwind CSS
+- Backend: Node.js, Express.js
+- Banco de Dados: MongoDB Atlas
+- Hospedagem: Vercel (frontend), Render (backend)
+- Testes: Postman
+
+## ⚙️ Como rodar o projeto localmente
+
+1. Clone o repositório.
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/price-comparator.git
+cd price-comparator
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
+## ou
+```bash
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configure as variáveis de ambiente:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Crie um arquivo **.env** na raiz do projeto:
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+Ajuste conforme o ambiente desejado.
 
-## Learn More
+4. Execute o servidor de desenvolvimento
+```bash
+npm run dev
+```
+Acesse: http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+### 📦 Deploy
+- **Frontend:** Aplicação web -[https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
+- **Backend (API):** Endpoints REST — [https://price-comparator-2hvq.onrender.com/produtos](https://price-comparator-2hvq.onrender.com/produtos)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 Licença
+Este projeto está licenciado sob a [MIT License](./LICENSE.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👩🏽‍💻Desenvolvido por
+### Amanda Hellen
