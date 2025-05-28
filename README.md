@@ -8,7 +8,7 @@ A plataforma simula uma rede de mercados fictícios, permitindo que o usuário c
 - <a href="#objetivo">Objetivo</a>
 - <a href="#funcionalidades">Funcionalidades</a>
 - <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
-- <a href="# como-rodar-o-projeto-localmente"> Como rodar o projeto localmente</a>
+- <a href="#como-rodar-o-projeto-localmente">Como rodar o projeto localmente</a>
 - <a href="#deploy"> Deploy</a>
 - <a href="#desenvolvido-por"> Desenvolvido por</a>
 
@@ -62,7 +62,7 @@ npm run dev
 ```
 Acesse: http://localhost:3000
 
-### 📦Deploy
+## 📦Deploy
 - **Frontend:** Aplicação web -[https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
 - **Backend (API):** Endpoints REST — [https://price-comparator-2hvq.onrender.com/produtos](https://price-comparator-2hvq.onrender.com/produtos)
 
