@@ -8,7 +8,7 @@ A plataforma simula uma rede de mercados fictícios, permitindo que o usuário c
 - <a href="#objetivo">Objetivo</a>
 - <a href="#funcionalidades">Funcionalidades</a>
 - <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
-- <a href="#como-rodar-o-projeto-localmente"> Como rodar o projeto localmente</a>
+- <a href="# como-rodar-o-projeto-localmente"> Como rodar o projeto localmente</a>
 - <a href="#deploy"> Deploy</a>
 - <a href="#desenvolvido-por"> Desenvolvido por</a>
 
@@ -24,7 +24,7 @@ A plataforma simula uma rede de mercados fictícios, possibilitando a comparaç�
 - 🔄 Feedback visual de carregamento.
 - ⚠️ Exibição de mensagens de erro caso a API esteja indisponível.
 
-## 🖥️Tecnologias Utilizadas
+## 🖥️Tecnologias utilizadas
 - Frontend: Next.js, React, Tailwind CSS
 - Backend: Node.js, Express.js
 - Banco de Dados: MongoDB Atlas
