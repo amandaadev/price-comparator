@@ -1,7 +1,10 @@
 # 🛒 Price Comparator
 
-Aplicação web para facilitar a comparação de preços de produtos em mercados fictícios, com foco em ajudar pessoas de baixa renda a economizar.
-A plataforma simula uma rede de mercados fictícios, permitindo que o usuário compare preços de forma prática, como se estivesse pesquisando em mercados reais próximos.
+Uma aplicação web para facilitar a comparação de preços de produtos em mercados fictícios, com foco em ajudar pessoas de baixa renda a economizar.
+A plataforma simula uma rede fictícia de mercados, permitindo que o usuário compare os preços de forma prática e rápida, como se estivesse pesquisando em mercados reais próximos.
+
+### Imagem do Projeto 👇
+![Imagem do projeto](./public/images/price-comparator.png)
 
 ## Índice
 
@@ -12,10 +15,9 @@ A plataforma simula uma rede de mercados fictícios, permitindo que o usuário c
 - <a href="#deploy"> Deploy</a>
 - <a href="#desenvolvido-por"> Desenvolvido por</a>
 
-
 ## 🎯Objetivo
 O Price Comparator tem como principal missão promover o consumo consciente e facilitar o acesso a informações de preços, ajudando pessoas de baixa renda a economizar no dia a dia.
-A plataforma simula uma rede de mercados fictícios, possibilitando a comparação rápida e eficiente de preços.
+A plataforma simula uma rede de mercados fictícios, cadastrados via API, juntamente com seus produtos, permitindo que os usuários realizem buscas e comparações rápidas e eficientes de preços.
 
 ## 🚀Funcionalidades
 - 🔎 Buscar produtos pelo nome.
@@ -33,7 +35,7 @@ A plataforma simula uma rede de mercados fictícios, possibilitando a comparaç�
 
 ## ⚙️Como rodar o projeto localmente
 
-1. Clone o repositório.
+1. Clone o repositório:
 ```bash
 git clone https://github.com/seu-usuario/price-comparator.git
 cd price-comparator
@@ -63,7 +65,7 @@ npm run dev
 Acesse: http://localhost:3000
 
 ## 📦Deploy
-- **Frontend:** Aplicação web -[https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
+- **Frontend:** Aplicação web - [https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
 - **Backend (API):** Endpoints REST — [https://price-comparator-2hvq.onrender.com/produtos](https://price-comparator-2hvq.onrender.com/produtos)
 
 ## 👩🏽‍💻Desenvolvido por
