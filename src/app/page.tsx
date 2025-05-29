@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import { SearchBar } from "../components/search-bar/search-bar";
+import { ProductList } from "../components/product-list";
 
 interface Produto {
-  _id: string; // Reflete o campo id gerado pelo MongoDB
+  _id: string;
   nome: string;
   preco: number;
   mercado: string;
@@ -12,13 +14,15 @@ export default function Home() {
   const [produto, setProduto] = useState("");
   const [resultados, setResultados] = useState<Produto[]>([]);
   const [buscaFeita, setBuscaFeita] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
 
   const buscarPrecos = async () => {
+    setLoading(true);
     try {
-      const url = produto
-        ? `${process.env.NEXT_PUBLIC_API_URL}/produtos?nome=${produto}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/produtos`;
-
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/produtos${
+        produto ? `?nome=${produto}` : ""
+      }`;
       const res = await fetch(url);
       setBuscaFeita(true);
 
@@ -31,8 +35,11 @@ export default function Home() {
       setResultados(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Erro ao buscar:", error);
+      setErro("Erro ao buscar dados. Tente novamente mais tarde.");
       setResultados([]);
       setBuscaFeita(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,46 +58,27 @@ export default function Home() {
       style={{ backgroundImage: 'url("/images/fundo.png")' }}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
+
       <h1 className="text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400 animate-bounce duration-1000 shadow-lg md:text-6xl">
         Busca Preços
       </h1>
-      <p className="md:text-[25px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400  animate-bounce duration-1000 shadow-lg text-[18px] text-center">
+      <p className="md:text-[25px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-fuchsia-400 to-yellow-400 animate-bounce duration-1000 shadow-lg text-[18px] text-center">
         Comparou, economizou!
       </p>
-      <div className="mt-4 flex relative z-10 gap-2">
-        <input
-          className="border-2 border-b-fuchsia-300 p-2 w-auto md:w-72"
-          value={produto}
-          onChange={(e) => setProduto(e.target.value)}
-          placeholder="Digite o nome do produto"
-          onKeyDown={handleKeyDown}
-        />
-        <button
-          onClick={buscarPrecos}
-          className="bg-green-600 text-white font-semibold px-4 py-2 rounded text-[20px] shadow-lg transform transition-all duration-300 hover:bg-green-700 hover:scale-105 hover:shadow-xl"
-        >
-          Buscar
-        </button>
-      </div>
-      <ul className="mt-4 relative z-10">
-        {resultados.map((item) => {
-          const isMenorPreco = item.preco === menorPreco;
 
-          return (
-            <li
-              key={item._id}
-              className={`border-2 p-2 mt-2 w-full text-center ${
-                isMenorPreco
-                  ? "border-yellow-400 bg-yellow-600 animate-pulse font-bold scale-105"
-                  : "border-white"
-              }`}
-            >
-              <strong>{item.nome}</strong> - R${item.preco.toFixed(2)} (
-              {item.mercado})
-            </li>
-          );
-        })}
-      </ul>
+      <SearchBar
+        produto={produto}
+        setProduto={setProduto}
+        buscarPrecos={buscarPrecos}
+        handleKeyDown={handleKeyDown}
+        loading={loading}
+      />
+
+      <ProductList resultados={resultados} menorPreco={menorPreco} />
+      {erro && (
+        <p className="text-red-400 text-xl mt-4 relative z-10">{erro}</p>
+      )}
+
       {buscaFeita && resultados.length === 0 && (
         <p className="text-white text-2xl mt-4 relative z-10">
           Nenhum resultado encontrado.

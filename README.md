@@ -64,6 +64,18 @@ npm run dev
 ```
 Acesse: http://localhost:3000
 
+## 📊 Exemplo de Dados da API
+Abaixo está um exemplo de resposta da API ao solicitar informações dos produtos cadastrados.
+![Exemplo de Dados da API](./public/images//respostaAPI.png)
+
+Cada produto possui:
+
+- nome: o nome do produto.
+- preco: valor do produto.
+- mercado: nome do mercado onde o produto foi cadastrado.
+- _id: gerado automaticamente pelo banco de dados.
+- __v: versão do documento, gerenciada automaticamente pelo Mongoose.
+
 ## 📦Deploy
 - **Frontend:** Aplicação web - [https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
 - **Backend (API):** Endpoints REST — [https://price-comparator-2hvq.onrender.com/produtos](https://price-comparator-2hvq.onrender.com/produtos)
