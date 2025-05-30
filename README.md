@@ -12,8 +12,9 @@ A plataforma simula uma rede fictícia de mercados, permitindo que o usuário co
 - <a href="#funcionalidades">Funcionalidades</a>
 - <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
 - <a href="#como-rodar-o-projeto-localmente">Como rodar o projeto localmente</a>
-- <a href="#deploy"> Deploy</a>
-- <a href="#desenvolvido-por"> Desenvolvido por</a>
+- <a href="#exemplo-de-dados-da-api">Exemplo de Dados da API</a>
+- <a href="#deploy">Deploy</a>
+- <a href="#desenvolvido-por">Desenvolvido por</a>
 
 ## 🎯Objetivo
 O Price Comparator tem como principal missão promover o consumo consciente e facilitar o acesso a informações de preços, ajudando pessoas de baixa renda a economizar no dia a dia.
@@ -27,11 +28,12 @@ A plataforma simula uma rede de mercados fictícios, cadastrados via API, juntam
 - ⚠️ Exibição de mensagens de erro caso a API esteja indisponível.
 
 ## 🖥️Tecnologias utilizadas
-- Frontend: Next.js, React, Tailwind CSS
-- Backend: Node.js, Express.js
-- Banco de Dados: MongoDB Atlas
-- Hospedagem: Vercel (frontend), Render (backend)
-- Testes: Postman
+
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Banco de Dados:** MongoDB Atlas
+- **Hospedagem:** Vercel (frontend), Render (backend)
+- **Testes:** Postman
 
 ## ⚙️Como rodar o projeto localmente
 
@@ -64,17 +66,17 @@ npm run dev
 ```
 Acesse: http://localhost:3000
 
-## 📊 Exemplo de Dados da API
+## 📊Exemplo de Dados da API
 Abaixo está um exemplo de resposta da API ao solicitar informações dos produtos cadastrados.
-![Exemplo de Dados da API](./public/images//respostaAPI.png)
+<img src="./public/images/respostaAPI.png" alt="Exemplo de Dados da API" width="480"/>
 
 Cada produto possui:
 
-- nome: o nome do produto.
-- preco: valor do produto.
-- mercado: nome do mercado onde o produto foi cadastrado.
-- _id: gerado automaticamente pelo banco de dados.
-- __v: versão do documento, gerenciada automaticamente pelo Mongoose.
+- **nome:** o nome do produto.
+- **preco:** valor do produto.
+- **mercado:** nome do mercado onde o produto foi cadastrado.
+- **_id:** gerado automaticamente pelo banco de dados.
+- **__v:** versão do documento, gerenciada automaticamente pelo Mongoose.
 
 ## 📦Deploy
 - **Frontend:** Aplicação web - [https://price-comparator-nine.vercel.app](https://price-comparator-nine.vercel.app)
