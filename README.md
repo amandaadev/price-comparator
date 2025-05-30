@@ -27,7 +27,7 @@ A plataforma simula uma rede de mercados fictícios, cadastrados via API, juntam
 - 🔄 Feedback visual de carregamento.
 - ⚠️ Exibição de mensagens de erro caso a API esteja indisponível.
 
-## 🖥️Tecnologias utilizadas
+## 🖥️ Tecnologias utilizadas
 
 - **Frontend:** Next.js, Tailwind CSS
 - **Backend:** Node.js, Express.js
@@ -35,7 +35,7 @@ A plataforma simula uma rede de mercados fictícios, cadastrados via API, juntam
 - **Hospedagem:** Vercel (frontend), Render (backend)
 - **Testes:** Postman
 
-## ⚙️Como rodar o projeto localmente
+## ⚙️ Como rodar o projeto localmente
 
 1. Clone o repositório:
 ```bash
