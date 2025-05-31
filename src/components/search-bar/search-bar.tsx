@@ -12,13 +12,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="mt-4 flex relative z-10 gap-2">
       <input
-        className="border-2 border-b-fuchsia-300 p-2 w-auto md:w-72"
+        className="border-2 border-black dark:border-white bg-white dark:bg-black text-black dark:text-white p-2 w-auto md:w-72 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-300"
         value={produto}
         onChange={(e) => setProduto(e.target.value)}
         placeholder="Digite o nome do produto"
         onKeyDown={handleKeyDown}
         aria-label="Buscar produto"
       />
+
       <button
         onClick={buscarPrecos}
         disabled={loading}
