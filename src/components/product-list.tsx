@@ -25,10 +25,11 @@ export const ProductList: React.FC<ProductListProps> = ({
         return (
           <li
             key={item._id}
-            className={`border-2 p-2 mt-2 w-full text-center ${
+            className={`border-2 p-2 mt-2 w-full text-center
+            ${
               isMenorPreco
-                ? "border-yellow-400 bg-yellow-600 animate-pulse font-bold scale-105"
-                : "border-white"
+                ? "border-yellow-400 bg-yellow-600 animate-pulse font-bold scale-105 text-black dark:text-white"
+                : "border-white text-black dark:text-white"
             }`}
           >
             <strong>{item.nome}</strong> - R${item.preco.toFixed(2)} (
