@@ -1,7 +1,6 @@
 # 🛒 Price Comparator
 
-Uma aplicação web para facilitar a comparação de preços de produtos em mercados fictícios, com foco em ajudar pessoas de baixa renda a economizar.
-A plataforma simula uma rede fictícia de mercados, permitindo que o usuário compare os preços de forma prática e rápida, como se estivesse pesquisando em mercados reais próximos.
+Uma aplicação web feita para facilitar a comparação de preços de produtos em mercados da região, com foco em ajudar pessoas a economizarem da melhor forma. A plataforma simula uma rede fictícia de mercados, permitindo que o usuário compare os preços de forma prática e rápida, como se estivesse pesquisando em mercados reais próximos.
 
 ### Imagem do Projeto 👇
 ![Imagem do projeto](./public/images/price-comparator.png)
@@ -17,7 +16,7 @@ A plataforma simula uma rede fictícia de mercados, permitindo que o usuário co
 - <a href="#desenvolvido-por">Desenvolvido por</a>
 
 ## 🎯Objetivo
-O Price Comparator tem como principal missão promover o consumo consciente e facilitar o acesso a informações de preços, ajudando pessoas de baixa renda a economizar no dia a dia.
+O Price Comparator tem como principal missão promover o consumo consciente e facilitar o acesso a informações de preços, ajudando pessoas a economizarem da melhor forma no dia a dia.
 A plataforma simula uma rede de mercados fictícios, cadastrados via API, juntamente com seus produtos, permitindo que os usuários realizem buscas e comparações rápidas e eficientes de preços.
 
 ## 🚀Funcionalidades
